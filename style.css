@@ -1,0 +1,232 @@
+/* ROOT AND UTILITIES */
+:root {
+    [span_5](start_span)/* Base font size - allows 'rem' to scale easily[span_5](end_span) */
+    font-size: 16px; 
+    --primary-color: #007bff; /* A nice blue */
+    --secondary-color: #f8f9fa; /* Light grey */
+    --dark-color: #212529; /* Dark text */
+    --font-stack: 'Poppins', sans-serif;
+}
+
+[span_6](start_span)/* Global Reset and Typography[span_6](end_span) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-stack);
+    line-height: 1.6;
+    color: var(--dark-color);
+}
+
+h1 { font-size: 3rem; [span_7](start_span)} /* Use rem for scaling fonts[span_7](end_span) */
+h2 { font-size: 2.25rem; margin-bottom: 1.5rem; }
+p { font-size: 1rem; margin-bottom: 1rem; }
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease; [span_8](start_span)/* Smooth transition for links[span_8](end_span) */
+}
+
+a:hover {
+    color: var(--dark-color);
+}
+
+.section {
+    padding: 5rem 10vw; [span_9](start_span)[span_10](start_span)/* Use vw for responsive horizontal padding[span_9](end_span)[span_10](end_span) */
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; [span_11](start_span)[span_12](start_span)[span_13](start_span)/* Transitions and Transform[span_11](end_span)[span_12](end_span)[span_13](end_span) */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px); [span_14](start_span)/* Transform effect on hover[span_14](end_span) */
+}
+
+[span_15](start_span)/* 1. FLEXBOX: HEADER[span_15](end_span) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5vw;
+    background-color: var(--secondary-color);
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav a {
+    margin-left: 1.5rem;
+    font-weight: 600;
+}
+
+[span_16](start_span)/* 2. FLEXBOX: HERO SECTION[span_16](end_span) */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8rem 10vw;
+    background-color: #e9ecef;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 55%;
+}
+
+.hero-image {
+    flex: 1;
+    max-width: 40%;
+    text-align: right;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 50%;
+}
+
+[span_17](start_span)/* 3. CSS GRID: SKILLS & PROJECTS[span_17](end_span) */
+.skills-grid, .projects-grid {
+    display: grid;
+    /* 3 columns on desktop, auto-flow and minmax for fluid design */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card, .project-card {
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; [span_18](start_span)/* Transitions for hover[span_18](end_span) */
+}
+
+.skill-card:hover, .project-card:hover {
+    transform: translateY(-5px); [span_19](start_span)/* Lift card on hover[span_19](end_span) */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 4. CONTACT FORM */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+.contact-btn {
+    align-self: flex-start;
+}
+
+/* 5. FOOTER */
+.footer {
+    text-align: center;
+    padding: 2rem 5vw;
+    background-color: var(--dark-color);
+    color: white;
+    font-size: 0.9rem;
+}
+
+[span_20](start_span)[span_21](start_span)[span_22](start_span)/* 6. ANIMATIONS & KEYFRAMES[span_20](end_span)[span_21](end_span)[span_22](end_span) */
+/* Keyframe for color-changing text */
+@keyframes color-shift {
+    0%   { color: var(--primary-color); }
+    50%  { color: #ffc107; /* Yellow */ }
+    100% { color: var(--primary-color); }
+}
+
+.animated-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    /* Apply the animation to the text */
+    animation: color-shift 4s ease-in-out infinite; 
+}
+
+[span_23](start_span)[span_24](start_span)/* 7. MEDIA QUERIES (Mobile-First Design)[span_23](end_span)[span_24](end_span) */
+
+/* Mobile layout is the default (already styled above) */
+
+/* Tablet and Desktop Styles (min-width: 768px) */
+@media (max-width: 768px) {
+    
+    [span_25](start_span)/* Make hero section stack elements (text above image)[span_25](end_span) */
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 4rem 5vw;
+    }
+    
+    .hero-content, .hero-image {
+        max-width: 100%;
+    }
+    
+    .hero-image {
+        order: -1; [span_26](start_span)/* Move image to the top on mobile/tablet[span_26](end_span) */
+        margin-bottom: 2rem;
+    }
+
+    .hero-image img {
+        max-width: 200px; /* Smaller image on mobile */
+    }
+
+    /* Adjust skills/projects grid for a 2-column layout on tablet */
+    .skills-grid, .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile-only styles (min-width: 480px) */
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .nav {
+        margin-top: 1rem;
+    }
+    
+    .nav a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+    
+    [span_27](start_span)/* Ensure skills/projects grid stacks in a single column on small screens[span_27](end_span) */
+    .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 { font-size: 2rem; }
+    .animated-title { font-size: 1.5rem; }
+}
